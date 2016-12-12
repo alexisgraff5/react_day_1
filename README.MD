@@ -16,6 +16,8 @@
 - Templating
   - Map & Filter
 - Show/Hide
+    ternary condition ? ifTrue : ifFalse
+    return null to hide
 
 ###React Components
 - Parent to child relationship
