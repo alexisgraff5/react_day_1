@@ -8,9 +8,14 @@
 ###A React Component
 - The render method
 - Setting state
+    'this' will represent our component
+    'this.setState' to change the state and rerun the render method
 - Event handling
+    Give it a function
+    setState to update DOM
 - Templating
   - Map & Filter
+- Show/Hide
 
 ###React Components
 - Parent to child relationship
@@ -21,5 +26,6 @@
 ###JS topics
 - Context binding (?)
 - Partial application
+    giving a function arguments to be used when it is run
 - Map
 - Filter
