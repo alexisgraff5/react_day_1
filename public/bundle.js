@@ -54,70 +54,37 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _ChildComponent = __webpack_require__(178);
+	
+	var _ChildComponent2 = _interopRequireDefault(_ChildComponent);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	//Display a list of friends (Templating)
-	//Show an 'active' friend's info (bound to state)
-	//Be able to switch between friends (event handling)
-	
-	var Mini = _react2.default.createClass({
-	  displayName: 'Mini',
+	var Parent = _react2.default.createClass({
+	  displayName: 'Parent',
 	  getInitialState: function getInitialState() {
 	    return {
-	      activeFriend: {},
-	      friends: [{ name: 'heather', email: 'hbullock@gmail.com' }, { name: 'amber', email: 'ambs@aol.com' }, { name: 'rebecca', email: 'tualarebecca@gmail.com' }, { name: 'shelley', email: 'shellbell@gmail.com' }, { name: 'kendall', email: 'kenny@yahoo.com' }, { name: 'ashton', email: 'ashtontowner@gmail.com' }]
+	      name: 'Wesley'
 	    };
 	  },
 	  render: function render() {
-	    var _this = this;
-	
 	    return _react2.default.createElement(
 	      'div',
 	      null,
-	      _react2.default.createElement(
-	        'button',
-	        { onClick: this.toggleEmails },
-	        'Show Email'
-	      ),
-	      _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(
-	          'h1',
-	          null,
-	          this.state.activeFriend.name
-	        ),
-	        _react2.default.createElement(
-	          'h1',
-	          null,
-	          this.state.activeFriend.email
-	        )
-	      ),
-	      this.state.friends.map(function (friend) {
-	        return _react2.default.createElement(
-	          'div',
-	          {
-	            onClick: _this.setActiveFriend.bind(_this, friend),
-	            key: friend.email },
-	          friend.name,
-	          _this.state.showEmail ? friend.email : null
-	        );
+	      _react2.default.createElement(_ChildComponent2.default, {
+	        changeName: this.changeName.bind(this),
+	        superName: this.state.name
 	      })
 	    );
 	  },
-	  toggleEmails: function toggleEmails() {
+	  changeName: function changeName(name) {
 	    this.setState({
-	      showEmail: !this.state.showEmail
-	    });
-	  },
-	  setActiveFriend: function setActiveFriend(friend) {
-	    this.setState({
-	      activeFriend: friend
+	      name: name
 	    });
 	  }
 	});
 	
-	_reactDom2.default.render(_react2.default.createElement(Mini, null), document.getElementById("app"));
+	_reactDom2.default.render(_react2.default.createElement(Parent, null), document.getElementById("app"));
 
 /***/ },
 /* 1 */
@@ -21525,6 +21492,39 @@
 	
 	module.exports = __webpack_require__(87);
 
+
+/***/ },
+/* 178 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(177);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	exports.default = _react2.default.createClass({
+	  displayName: 'Child.component',
+	  render: function render() {
+	    return _react2.default.createElement(
+	      'div',
+	      null,
+	      this.props.superName,
+	      _react2.default.createElement('input', { onKeyDown: this.keyDownHandler })
+	    );
+	  },
+	  keyDownHandler: function keyDownHandler(e) {
+	    if (e.keyCode == 13) {
+	      this.props.changeName(e.target.value);
+	    }
+	  }
+	});
 
 /***/ }
 /******/ ]);
